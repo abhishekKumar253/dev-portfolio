@@ -68,6 +68,7 @@ export const Hero = () => {
         <img
           src="/hero-bg.jpg"
           alt="Background"
+          loading="eager"
           className="w-full h-full object-cover opacity-40"
         />
         <div className="absolute inset-0 bg-linear-to-b from-background/20 via-background/80 to-background" />
@@ -172,6 +173,7 @@ export const Hero = () => {
                 <img
                   src="/profile-photo.jpg"
                   alt="Abhishek Kumar"
+                  loading="eager"
                   className="w-full aspect-4/5 object-cover rounded-2xl"
                 />
 
