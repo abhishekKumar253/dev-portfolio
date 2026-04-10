@@ -52,6 +52,22 @@ const projects = [
     github:
       "https://github.com/abhishekKumar253/connectify-fullstack-chat-video-calling-App",
   },
+  {
+    title: "VisionCraft - AI Image Generator SaaS",
+    description:
+      "An AI-powered image generation SaaS where users upload a photo, choose a style preset, and get stunning AI-transformed images — built with secure auth, cloud storage, and a seamless UX.",
+    image: "/projects/project5.png",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Clerk",
+      "Neon",
+      "ImageKit",
+      "OpenAI API",
+    ],
+    link: "https://visioncraft-ai-ten.vercel.app",
+    github: "https://github.com/abhishekKumar253/visioncraft-ai",
+  },
 ];
 
 export const Projects = () => {
@@ -67,7 +83,6 @@ export const Projects = () => {
           <span className="text-secondary-foreground text-sm tracking-wider uppercase">
             Featured Work
           </span>
-
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
             Projects that
             <span className="font-serif italic font-normal text-white">
@@ -75,7 +90,6 @@ export const Projects = () => {
               make an impact.
             </span>
           </h2>
-
           <p className="text-muted-foreground">
             A selection of my work — showcasing real-world applications,
             performance, and problem-solving skills.
@@ -84,64 +98,73 @@ export const Projects = () => {
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, idx) => (
-            <div
-              key={idx}
-              className="group glass rounded-2xl border border-white/10 overflow-hidden hover:-translate-y-2 transition-all duration-300">
-              {/* Image */}
-              <div className="relative overflow-hidden aspect-video">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-                />
+          {projects.map((project, idx) => {
+            const isLastOdd =
+              idx === projects.length - 1 && projects.length % 2 !== 0;
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent opacity-60" />
+            return (
+              <div
+                key={idx}
+                className={`group glass rounded-2xl border border-white/10 overflow-hidden hover:-translate-y-2 transition-all duration-300 ${
+                  isLastOdd ? "md:col-span-2" : ""
+                }`}>
+                <div className={isLastOdd ? "md:flex" : ""}>
+                  {/* Image */}
+                  <div
+                    className={`relative overflow-hidden ${
+                      isLastOdd ? "md:w-1/2" : ""
+                    } aspect-video`}>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent opacity-60" />
+                    <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full glass hover:bg-primary hover:text-white transition">
+                        <ArrowUpRight className="w-5 h-5" />
+                      </a>
 
-                {/* Hover Buttons */}
-                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-full glass hover:bg-primary hover:text-white transition">
-                    <ArrowUpRight className="w-5 h-5" />
-                  </a>
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full glass hover:bg-primary hover:text-white transition">
+                        <GithubIcon />
+                      </a>
+                    </div>
+                  </div>
 
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-full glass hover:bg-primary hover:text-white transition">
-                    <GithubIcon />
-                  </a>
+                  {/* Content */}
+                  <div
+                    className={`p-6 space-y-4 ${
+                      isLastOdd ? "md:w-1/2 flex flex-col justify-center" : ""
+                    }`}>
+                    <h3 className="text-xl font-semibold group-hover:text-primary transition">
+                      {project.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag, i) => (
+                        <span
+                          key={i}
+                          className="px-3 py-1 text-xs rounded-full border border-white/10 text-muted-foreground hover:border-primary hover:text-primary transition">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              {/* Content */}
-              <div className="p-6 space-y-4">
-                <h3 className="text-xl font-semibold group-hover:text-primary transition">
-                  {project.title}
-                </h3>
-
-                <p className="text-muted-foreground text-sm">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 text-xs rounded-full border border-white/10 text-muted-foreground hover:border-primary hover:text-primary transition">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* CTA */}
