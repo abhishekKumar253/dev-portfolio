@@ -175,7 +175,7 @@ export const Projects = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2">
-              View More on GitHub
+              View My Work on GitHub 🚀
               <ArrowUpRight className="w-5 h-5" />
             </a>
           </AnimatedBorderButton>
